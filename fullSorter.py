@@ -145,7 +145,7 @@ def printHierarchy(element):
 # NOTE THAT THE YEAR ONLY GOES UP TO 2015, and the YEARS all start at 1994. ALSO "prelim" represents current year.
 
 STARTING_YEAR = 1994
-ENDING_YEAR = 2016 # Doesn't actually use year 2016, check math to see how it works (DO NOT CHANGE THIS)
+ENDING_YEAR = 2015 # Doesn't actually use year 2016, check math to see how it works (DO NOT CHANGE THIS)
 MINIMUM_LENGTH_OF_SOUP = 4000 # Received this value from testing the files with zero bytes.
 STARTING_TIME = time.time()
 
@@ -191,11 +191,6 @@ for variateYear in variateYearRange: # This creates [0, 1, ..., 20, 'prelim']
             # print "WOOPS! Successfully caught URLError."
             triedRetry = True
             retryNumber += 1
-
-    # Exits the current iteration of inner loop.
-    # The reason for as to why 'break' isn't used is because some years are missing from some chapters.
-    #if len(str(soup)) in EXCEPTIONS_FOR_LETTERS:
-    #    continue
 
     # This represents the path to which the file will be saved.
     specimenName = 'fullResults/yr' + ('CURR' if variateYear == 'prelim' else variateYear) + '.out'
@@ -254,12 +249,17 @@ for variateYear in variateYearRange: # This creates [0, 1, ..., 20, 'prelim']
 
                         validTag += 1
                     # This implements data into the objects.
-                    elif potentialTag in dataType and prevElement is not None:
-                        if not prevElement.hasData():
-                            prevElement.setData(contentWithinTags)
+                    elif potentialTag in dataType:
+                        try:
+                            prevElement
+                        except NameError:
+                            invalidTag += 1
                         else:
-                            prevElement.addToData(contentWithinTags)
-                        validTag += 1
+                            if not prevElement.hasData():
+                                prevElement.setData(contentWithinTags)
+                            else:
+                                prevElement.addToData(contentWithinTags)
+                            validTag += 1
                     else:
                         # Essentially, if no tag is found or anything then this "else" runs.
                         # Keep note of how there is a delimiter that allows for ease of searching inserted before |potentialTag|.
