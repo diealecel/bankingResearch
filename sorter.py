@@ -188,7 +188,6 @@ for variateChapter in xrange(ENDING_CHAPTER - STARTING_CHAPTER + 1): # This crea
                     br.open(bankLawsSite)
                     html = br.response().read()
                     soup = BeautifulSoup(html, 'html.parser') # Collect HTML from site.
-                    #print str(STARTING_CHAPTER + variateChapter) + variateLetter + ' has ' + str(len(str(soup)))
                     if len(str(soup)) > MINIMUM_LENGTH_OF_SOUP or len(str(soup)) in EXCEPTIONS_FOR_LETTERS:
                         break
                     triedRetry = True
@@ -204,9 +203,9 @@ for variateChapter in xrange(ENDING_CHAPTER - STARTING_CHAPTER + 1): # This crea
                 continue
 
             # This represents the path to which the file will be saved.
-            specimenName = 'Results/ch' + str(STARTING_CHAPTER + variateChapter) + variateLetter +  \
+            specimenName = 'results/ch' + str(STARTING_CHAPTER + variateChapter) + variateLetter +  \
                            'yr' + ('CURR' if variateYear == 'prelim' else variateYear) + '.out'
-            sourceName = 'Sources/ch' + str(STARTING_CHAPTER + variateChapter) + variateLetter +    \
+            sourceName = 'sources/ch' + str(STARTING_CHAPTER + variateChapter) + variateLetter +    \
                          'yr' + ('CURR' if variateYear == 'prelim' else variateYear) + '.in'
 
             with open(sourceName, 'w') as source: # Write HTML onto a file.
