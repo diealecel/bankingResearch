@@ -6,6 +6,17 @@
 # 2. figuring out a way to easily allow a user to compare texts from any given year
 #    to any other given year, also providing information about changes made.
 
+# The problem with this script seems to be that the files outputted have some small discrepancies.
+# Most of them have to do with the type of symbols used. Common "differences" are those of normal
+# quotes and smart quotes. There are also certain characters that don't translate well for some reason
+# for this script that have no issues with the chapter-by-chapter approach. An example is the single
+# quotation being represented as "&amp;apos;" instead of just "'". I believe that this issue
+# may be caused by one of two reasons (or maybe even both!):
+#     1. there is a difference in the unicode used in the sources (not my problem, but the coder's), or
+#     2. for some reason fullSorter.py cannot correctly represent certain characters (but keep in mind that
+#        it is using the same stuff as sorter.py, which represented them just fine, it seems).
+# For the time being I'll go ahead and use sorter.py instead of this script, fullSorter.py.
+
 import subprocess                   # Needed to clear the console window (and to use bash commands, not that they are needed).
 import time                         # Needed to calculate the amount of time taken to run algorithms.
 import httplib                      # Needed to catch IncompleteRead
