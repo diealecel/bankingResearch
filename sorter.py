@@ -147,7 +147,7 @@ def printHierarchy(element):
 STARTING_CHAPTER = 1
 ENDING_CHAPTER = 54
 STARTING_YEAR = 1994
-ENDING_YEAR = 2016 # Doesn't actually use year 2016, check math to see how it works (DO NOT CHANGE THIS)
+ENDING_YEAR = 2015
 MINIMUM_LENGTH_OF_SOUP = 4000 # Received this value from testing the files with zero bytes.
 STARTING_TIME = time.time()
 
