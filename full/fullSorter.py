@@ -14,7 +14,7 @@
 # may be caused by one of two reasons (or maybe even both!):
 #     1. there is a difference in the unicode used in the sources (not my problem, but the coder's), or
 #     2. for some reason fullSorter.py cannot correctly represent certain characters (but keep in mind that
-#        it is using the same stuff as sorter.py, which represented them just fine, it seems).
+#        it is using the same algorithms as sorter.py, which represented them just fine, it seems).
 # For the time being I'll go ahead and use sorter.py instead of this script, fullSorter.py.
 
 import subprocess                   # Needed to clear the console window (and to use bash commands, not that they are needed).
