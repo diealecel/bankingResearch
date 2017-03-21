@@ -1,0 +1,23 @@
+"section-head" (usually h3)
+"subsection-head" (usually h4)
+
+"statutory-body" (usually p) 
+this tag is as displayed for any <p> that isn't under "paragraph-head"
+for those under "paragraph-head" a system of -1em and consequent -2em (-nem) has an n amount of /t
+
+"paragraph-head" (usually h4 + indented once)
+
+<!-- field-start:head --> (h3 lines) (or end)
+<!-- field-start:statute --> (h4 & p's) (or end)
+<!-- field-start:repealedhead --> (h3 but for repealed)
+
+ignore uscode tags
+
+from biggest to smallest
+"section-head"
+"subsection-head" (starts with "-0em")
+"paragraph-head" (starts with -1em)
+"subparagraph-head" (starts with -2em)
+"clause-head" (starts with -3em)
+"subclause-head" (starts with -4em)
+“Subsubclause-head” (starts with -5em)
