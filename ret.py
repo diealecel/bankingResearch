@@ -73,7 +73,7 @@ def process_data(variate_yr_rng, undesirables):
                     source.write(str(soup))
 
                 top = [] # Contains all Text objects with section 'section-head'
-                top, n_objs, n_valid_tags, n_invalid_tags = make_top(soup, result_name, source_name, undesirables, variate_ch, variate_yr)
+                top, n_objs, n_valid_tags, n_invalid_tags = make_top(soup, result_name, source_name, undesirables, variate_ch, variate_let, variate_yr)
 
                 # Anything after this line is after the source.in has been read and |top|
                 # has been constructed.
@@ -125,7 +125,7 @@ def get_status(n_objs, retry, tries):
     return status
 
 
-def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_yr):
+def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_let, variate_yr):
     write_source(soup, source_name)
     
     top = [] # Contains all Text objects with section 'section-head'
@@ -204,7 +204,7 @@ def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_y
                         # Essentially, if no tag is found or anything then this ELSE runs.
                         # Keep note of how there is a delimiter that allows for ease of searching
                         # inserted before |potential_tag|.
-                        undesirables.add(str(CH_START + variate_ch) + ' ' + variate_yr + '::' + potential_tag)
+                        undesirables.add(str(CH_START + variate_ch) + variate_let + ' ' + variate_yr + '::' + potential_tag)
                         n_invalid_tags += 1
 
                     if not repeat_needed:

@@ -18,10 +18,10 @@ The purposes of this chapter are as follows:
 For purposes of this chapter, the following definitions shall apply:
 
 (1) Account
-The term "account" means a deposit account at a bank.
+The term “account” means a deposit account at a bank.
 
 (2) Bank
-The term "bank" means any person that is located in a State and engaged in the business of banking and includes—
+The term “bank” means any person that is located in a State and engaged in the business of banking and includes—
 (A) any depository institution (as defined in section 461(b)(1)(A) of this title);
 (B) any Federal reserve bank;
 (C) any Federal home loan bank; or
@@ -34,83 +34,83 @@ The term "bank" means any person that is located in a State and engaged in the b
 (3) Banking terms
 
 (A) Collecting bank
-The term "collecting bank" means any bank handling a check for collection except the paying bank.
+The term “collecting bank” means any bank handling a check for collection except the paying bank.
 
 (B) Depositary bank
-The term "depositary bank" means—
+The term “depositary bank” means—
 (i) the first bank to which a check is transferred, even if such bank is also the paying bank or the payee; or
 (ii) a bank to which a check is transferred for deposit in an account at such bank, even if the check is physically received and indorsed first by another bank.
 
 (C) Paying bank
-The term "paying bank" means—
+The term “paying bank” means—
 (i) the bank by which a check is payable, unless the check is payable at or through another bank and is sent to the other bank for payment or collection; or
 (ii) the bank at or through which a check is payable and to which the check is sent for payment or collection.
 
 (D) Returning bank
 
 (i) In general
-The term "returning bank" means a bank (other than the paying or depositary bank) handling a returned check or notice in lieu of return.
+The term “returning bank” means a bank (other than the paying or depositary bank) handling a returned check or notice in lieu of return.
 
 (ii) Treatment as collecting bank
 No provision of this chapter shall be construed as affecting the treatment of a returning bank as a collecting bank for purposes of section 4–202(b) of the Uniform Commercial Code.
 
 (4) Board
-The term "Board" means the Board of Governors of the Federal Reserve System.
+The term “Board” means the Board of Governors of the Federal Reserve System.
 
 (5) Business day
-The term "business day" has the same meaning as in section 4001(3) of this title.
+The term “business day” has the same meaning as in section 4001(3) of this title.
 
 (6) Check
-The term "check"—
+The term “check”—
 (A) means a draft, payable on demand and drawn on or payable through or at an office of a bank, whether or not negotiable, that is handled for forward collection or return, including a substitute check and a travelers check; and
 (B) does not include a noncash item or an item payable in a medium other than United States dollars.
 
 (7) Consumer
-The term "consumer" means an individual who—
+The term “consumer” means an individual who—
 (A) with respect to a check handled for forward collection, draws the check on a consumer account; or
 (B) with respect to a check handled for return, deposits the check into, or cashes the check against, a consumer account.
 
 (8) Consumer account
-The term "consumer account" has the same meaning as in section 4001(10) of this title.
+The term “consumer account” has the same meaning as in section 4001(10) of this title.
 
 (9) Customer
-The term "customer" means a person having an account with a bank.
+The term “customer” means a person having an account with a bank.
 
 (10) Forward collection
-The term "forward collection" means the transfer by a bank of a check to a collecting bank for settlement or the paying bank for payment.
+The term “forward collection” means the transfer by a bank of a check to a collecting bank for settlement or the paying bank for payment.
 
 (11) Indemnifying bank
-The term "indemnifying bank" means a bank that is providing an indemnity under section 5005 of this title with respect to a substitute check.
+The term “indemnifying bank” means a bank that is providing an indemnity under section 5005 of this title with respect to a substitute check.
 
 (12) MICR line
-The terms "MICR line" and "magnetic ink character recognition line" mean the numbers, which may include the bank routing number, account number, check number, check amount, and other information, that are printed near the bottom of a check in magnetic ink in accordance with generally applicable industry standards.
+The terms “MICR line” and “magnetic ink character recognition line” mean the numbers, which may include the bank routing number, account number, check number, check amount, and other information, that are printed near the bottom of a check in magnetic ink in accordance with generally applicable industry standards.
 
 (13) Noncash item
-The term "noncash item" has the same meaning as in section 4001(14) of this title.
+The term “noncash item” has the same meaning as in section 4001(14) of this title.
 
 (14) Person
-The term "person" means a natural person, corporation, unincorporated company, partnership, government unit or instrumentality, trust, or any other entity or organization.
+The term “person” means a natural person, corporation, unincorporated company, partnership, government unit or instrumentality, trust, or any other entity or organization.
 
 (15) Reconverting bank
-The term "reconverting bank" means—
+The term “reconverting bank” means—
 (A) the bank that creates a substitute check; or
 (B) if a substitute check is created by a person other than a bank, the first bank that transfers or presents such substitute check.
 
 (16) Substitute check
-The term "substitute check" means a paper reproduction of the original check that—
+The term “substitute check” means a paper reproduction of the original check that—
 (A) contains an image of the front and back of the original check;
 (B) bears a MICR line containing all the information appearing on the MICR line of the original check, except as provided under generally applicable industry standards for substitute checks to facilitate the processing of substitute checks;
 (C) conforms, in paper stock, dimension, and otherwise, with generally applicable industry standards for substitute checks; and
 (D) is suitable for automated processing in the same manner as the original check.
 
 (17) State
-The term "State" has the same meaning as in section 1813(a) of this title.
+The term “State” has the same meaning as in section 1813(a) of this title.
 
 (18) Truncate
-The term "truncate" means to remove an original paper check from the check collection or return process and send to a recipient, in lieu of such original paper check, a substitute check or, by agreement, information relating to the original check (including data taken from the MICR line of the original check or an electronic image of the original check), whether with or without subsequent delivery of the original paper check.
+The term “truncate” means to remove an original paper check from the check collection or return process and send to a recipient, in lieu of such original paper check, a substitute check or, by agreement, information relating to the original check (including data taken from the MICR line of the original check or an electronic image of the original check), whether with or without subsequent delivery of the original paper check.
 
 (19) Uniform Commercial Code
-The term "Uniform Commercial Code" means the Uniform Commercial Code in effect in a State.
+The term “Uniform Commercial Code” means the Uniform Commercial Code in effect in a State.
 
 (20) Other terms
 Unless the context requires otherwise, the terms not defined in this section shall have the same meanings as in the Uniform Commercial Code.
@@ -123,7 +123,7 @@ A person may deposit, present, or send for collection or return a substitute che
 (b) Legal equivalence
 A substitute check shall be the legal equivalent of the original check for all purposes, including any provision of any Federal or State law, and for all persons if the substitute check—
 (1) accurately represents all of the information on the front and back of the original check as of the time the original check was truncated; and
-(2) bears the legend: "This is a legal copy of your check. You can use it the same way you would use the original check.".
+(2) bears the legend: “This is a legal copy of your check. You can use it the same way you would use the original check.”.
 
 (c) Endorsements
 A bank shall ensure that the substitute check for which the bank is the reconverting bank bears all endorsements applied by parties that previously handled the check (whether in electronic form or in the form of the original paper check or a substitute check) for forward collection or return.
@@ -405,7 +405,7 @@ A timely claim by a consumer under section 5006 of this title for expedited recr
 Each bank shall provide, in accordance with subsection (b), a brief notice about substitute checks that describes—
 (1) how a substitute check is the legal equivalent of an original check for all purposes, including any provision of any Federal or State law, and for all persons, if the substitute check—
 (A) accurately represents all of the information on the front and back of the original check as of the time at which the original check was truncated; and
-(B) bears the legend: "This is a legal copy of your check. You can use it in the same way you would use the original check."; and
+(B) bears the legend: “This is a legal copy of your check. You can use it in the same way you would use the original check.”; and
 (2) the consumer recredit rights established under section 5006 of this title when a consumer believes in good faith that a substitute check was not properly charged to the account of the consumer.
 
 (b) Distribution
@@ -466,14 +466,14 @@ In order to evaluate the implementation and the impact of this chapter, the Boar
 Before the end of the 30-month period beginning on the effective date of this chapter, the Board shall submit a report to the Congress containing the results of the study conducted under this section, together with recommendations for legislative action.
 
 §5016. Statistical reporting of costs and revenues for transporting checks between reserve banks
-In the annual report prepared by the Board for the first full calendar year after October 28, 2003, and in each of the 9 subsequent annual reports by the Board, the Board shall include the amount of operating costs attributable to, and an estimate of the Federal Reserve banks&amp;apos; imputed revenues derived from, the transportation of commercial checks between Federal Reserve bank check processing centers.
+In the annual report prepared by the Board for the first full calendar year after October 28, 2003, and in each of the 9 subsequent annual reports by the Board, the Board shall include the amount of operating costs attributable to, and an estimate of the Federal Reserve banks’ imputed revenues derived from, the transportation of commercial checks between Federal Reserve bank check processing centers.
 
 §5017. Evaluation and report by the Comptroller General
 
 (a) Study
 During the 5-year period beginning on October 28, 2003, the Comptroller General of the United States shall evaluate the implementation and administration of this chapter, including—
 (1) an estimate of the gains in economic efficiency made possible from check truncation;
-(2) an evaluation of the benefits accruing to consumers and financial institutions from reduced transportation costs, longer hours for accepting deposits for credit within 1 business day, the impact of fraud losses, and an estimate of consumers&amp;apos; share of the total benefits derived from this chapter; and
+(2) an evaluation of the benefits accruing to consumers and financial institutions from reduced transportation costs, longer hours for accepting deposits for credit within 1 business day, the impact of fraud losses, and an estimate of consumers’ share of the total benefits derived from this chapter; and
 (3) an assessment of consumer acceptance of the check truncation process resulting from this chapter, as well as any new costs incurred by consumers who had their original checks returned with their regular monthly statements prior to October 28, 2003.
 
 (b) Report to Congress
@@ -484,7 +484,7 @@ Before the end of the 5-year period referred to in subsection (a), the Comptroll
 (a) Findings
 The Congress finds as follows:
 (1) The Secretary of the Treasury has long compensated financial institutions for various critical depositary and financial agency services provided for or on behalf of the United States by—
-(A) placing large balances, commonly referred to as "compensating balances", on deposit at such institutions; and
+(A) placing large balances, commonly referred to as “compensating balances”, on deposit at such institutions; and
 (B) using imputed interest on such funds to offset charges for the various depositary and financial agency services provided to or on behalf of the Government.
 (2) As a result of sharp declines in interest rates over the last few years to record low levels, or the public debt outstanding reaching the statutory debt limit, the Department of the Treasury often has had to dramatically increase or decrease the size of the compensating balances on deposit at these financial institutions.
 (3) The fluctuation of the compensating balances, and the necessary pledging of collateral by financial institutions to secure the value of compensating balances placed with those institutions, have created unintended financial uncertainty for the Secretary of the Treasury and for the management by financial institutions of their cash and securities.
