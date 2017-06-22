@@ -95,6 +95,7 @@ class Text:
     def addToData(self, moreData):
         self.__data += '\n' + moreData
 
+
 # This method will recursively go through all the elements of the hierarchy and print them
 def printAll(e):
     objects = 0
@@ -108,6 +109,7 @@ def printAll(e):
             objects += printAll(thing.getSubsections())
     return objects
 
+
 # This method cleans the lines of code so that there is no residual HTML
 def cleanLineFromHTML(line):
     case1 = '<div class="wide_left_side-two-column-analysis-style-content-right">'
@@ -118,27 +120,39 @@ def cleanLineFromHTML(line):
 
     if line.find(case1) != -1:
         line = line[:line.find(case1)] + ' - ' + line[line.find(case1) + len(case1):]
+
     if line.find(case2) != -1: # Header (right side)
         line = line[:line.find(case2)] + '\t\t|\t\t' + line[line.find(case2) + len(case2):]
+
     if line.find(case3) != -1: # Header (right side)
         line = line[:line.find(case3)] + '\n' + line[line.find(case3) + len(case3):]
+
     if line.find(case4) != -1: # Left data thing, new line
         line = line[:line.find(case4)] + '\n' + line[line.find(case4) + len(case4):]
+
     if line.find(case5) != -1: # Right data thing, separated by delimiter
         line = line[:line.find(case5)] + ' | ' + line[line.find(case5) + len(case5):]
+
     if line.find("<") == -1 or line.find(">", line.find("<") + 1) == -1:
         return line
+
     newLine = line[0:line.find("<")] + line[line.find(">", line.find("<") + 1) + 1:]
+
     return cleanLineFromHTML(newLine)
+
 
 # This can be used to print the tag of a single Text object with the right indentation
 def printHierarchy(element):
     indentation = hierarchy[element.getSection()]
     result = ''
+
     for x in xrange(indentation):
         result += '    '
+
     result += (element.getSection() + '\n')
+
     return result
+
 
 """ Here is where all the work starts """
 
@@ -338,3 +352,7 @@ with open('undesirables.out', 'w') as post:
             normalSet.add(e[e.find('::') + 2:])
         for e in normalSet:
             post.write(e + '\n')
+
+if __name__ == '__main__':
+    pass
+    # this is the main method
