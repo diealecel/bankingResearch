@@ -451,6 +451,55 @@ def print_hierarchy(element):
     return result
 
 
+# This goes through |undesirables| and compares each of its elements with all the
+# elements in |all_tags|. If there is a match found, as in something in |all_tags|
+# is a part of something in |undesirables|, then |undesirables|' element is written
+# into undesirables_locs.out.
+def record_locs(undesirables, all_tags):
+    with open('undesirables_locs.out', 'w') as locs:
+        for undesirable in undesirables:
+            for tag in all_tags:
+                if undesirable.find(tag) != -1:
+                    locs.write(undesirable + '\n')
+                    break
+
+
+# und(esirable)
+# This grabs everything in undesirables_locs.out, gets rid of the identifiers and
+# delimiters, and puts the new files into undesirables.out. Essentially shows the
+# set of undesirable tags.
+def record_no_locs():
+    with open('undesirables.out', 'w') as no_locs:
+        with open('undesirables_locs.out', 'r') as locs:
+            und_no_locs = set()
+
+            for und in locs:
+                und_no_locs.add(und[und.find('::') + 2 : ])
+
+            for und in und_no_locs:
+                no_locs.write(und + '\n')
+
+
+# Potentially desirable undesirables.
+def pdu(undesirables):
+    print '\nSearching for potentially desirable undesirables...'
+
+    all_tags = []
+
+    for tag in DATA_TYPE:
+        all_tags.append(tag)
+
+    for tag in HIERARCHY:
+        all_tags.append(tag)
+
+    record_locs(undesirables, all_tags)
+    record_no_locs()
+
+    print 'Finished generating undesirable lists.'
+
+
+
+
 """ Here is where all the work starts """
 
 
@@ -466,6 +515,8 @@ if __name__ == '__main__':
     process_data(variate_yr_rng, undesirables)
 
     print_end()
+
+    pdu(undesirables)
 
 
 """with open('undesirablesWithCertainty.out', 'r') as source:
