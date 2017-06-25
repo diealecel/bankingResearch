@@ -439,7 +439,7 @@ def remove_html(line):
 
 
 # This can be used to print the tag of a single Text object with the right indentation
-def printHierarchy(element):
+def print_hierarchy(element):
     indentation = HIERARCHY[element.get_section()]
     result = ''
 
@@ -454,12 +454,6 @@ def printHierarchy(element):
 """ Here is where all the work starts """
 
 
-
-
-""" THIS MARKS WHEN I AM DONE TRANSCRIBING STUFF """
-
-
-# MAIN METHOD @@@@@@@@@@@@@
 if __name__ == '__main__':
     clear_console()
     print_beginning()
@@ -472,7 +466,6 @@ if __name__ == '__main__':
     process_data(variate_yr_rng, undesirables)
 
     print_end()
-
 
 
 """with open('undesirablesWithCertainty.out', 'r') as source:
