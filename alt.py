@@ -16,6 +16,9 @@ import mechanize                    # Needed to use Browser.
 from bs4 import BeautifulSoup       # Needed to read source code.
 
 
+# TITLE 15 GOES TO LETTER E and has ADDITIONAL THING THAT USES "-1"! LIKE
+# CHAPTER 2B-1
+
 # Initializing all variables.
 LAWS_URL_PRE_YR = 'http://uscode.house.gov/view.xhtml?hl=false&edition='
 LAWS_URL_POST_YR = '&req=granuleid%3AUSC-prelim-title12-chapter'
