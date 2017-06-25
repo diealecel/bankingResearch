@@ -13,7 +13,6 @@ from httplib import IncompleteRead  # Also needed to catch IncompleteRead
 import urllib2                      # Needed to use URLError.
 from urllib2 import URLError        # Needed to catch URLError.
 import mechanize                    # Needed to use Browser.
-#from mechanize import Browser       # Needed to access websites.
 from bs4 import BeautifulSoup       # Needed to read source code.
 
 
@@ -22,6 +21,9 @@ LAWS_URL_PRE_YR = 'http://uscode.house.gov/view.xhtml?hl=false&edition='
 LAWS_URL_POST_YR = '&req=granuleid%3AUSC-prelim-title12-chapter'
 
 EDGE_TAG = 'leader-work-head-left'
+
+
+# NOTE THAT THE YEAR ONLY GOES UP TO 2015, and the YEARS all start at 1994. ALSO "prelim" represents current year.
 
 CH_START = 1
 CH_STOP = 54
@@ -35,11 +37,8 @@ CH_LETS = ['', 'A', 'B']
 INVALID_URL_LENS = [3861, 3865, 3869, 3873] # Received these values from testing the files with invalid URL's.
 
 
-
 def clear_console():
     subprocess.call('clear', shell = True)
-
-
 
 
 def print_end():
@@ -86,21 +85,20 @@ def print_top(top, result):
 
     for obj in top:
         n_objs += 1
-        result.write(obj.getContent() + '\n')
+        result.write(obj.get_content() + '\n')
 
-        if obj.hasData():
-            result.write(obj.getData() + '\n')
+        if obj.has_data():
+            result.write(obj.get_data() + '\n')
 
         result.write('\n')
 
-        if obj.hasSubsections():
-            n_objs += print_top(obj.getSubsections(), result)
+        if obj.has_subsections():
+            n_objs += print_top(obj.get_subsections(), result)
 
     return n_objs
 
 
 def report(n_objs, retry, tries, ch_timer, variate_ch, variate_let, variate_yr, n_valid_tags, n_invalid_tags):
-    #n_objs = printAll(top)
     status = get_status(n_objs, retry, tries)
 
     print '{0:5}{1:6}{2:9}{3:10}{4:10}{5}'.format(str(CH_START + variate_ch) + variate_let, \
@@ -155,8 +153,8 @@ def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_l
 
                     tag_contents = remove_html(tag_contents)
 
-                    if potential_tag in hierarchy:
-                        hierarchy_lvl = hierarchy[potential_tag]
+                    if potential_tag in HIERARCHY:
+                        hierarchy_lvl = HIERARCHY[potential_tag]
 
                         # If |potential_tag| is 'section-head', then create a new Text object.
                         if hierarchy_lvl == 0:
@@ -165,38 +163,38 @@ def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_l
                             top.append(new) # |top| contains all 'section-head' Text objects.
                         
                         # If |prev_obj| has a hierarchy right above that of |potential_tag|...
-                        elif hierarchy_lvl > hierarchy[prev_obj.getSection()]:
+                        elif hierarchy_lvl > HIERARCHY[prev_obj.get_section()]:
                             new = Text(potential_tag, tag_contents, prev_obj, [], None)
-                            prev_obj.addSubsection(new)
+                            prev_obj.add_subsection(new)
 
-                        elif hierarchy_lvl == hierarchy[prev_obj.getSection()]:
-                            new = Text(potential_tag, tag_contents, prev_obj.getParent(), [], None)
-                            prev_obj.getParent().addSubsection(new)
+                        elif hierarchy_lvl == HIERARCHY[prev_obj.get_section()]:
+                            new = Text(potential_tag, tag_contents, prev_obj.get_parent(), [], None)
+                            prev_obj.get_parent().add_subsection(new)
                         
-                        # Implicit hierarchy_lvl < hierarchy[prev_obj.getSection()]
+                        # Implicit hierarchy_lvl < HIERARCHY[prev_obj.get_section()]
                         else:
                             # Plus one because you need an additional iteration to reach correct parent.
                             # The minus element is to correct for discrepancies in hierarchy (maybe there's
                             # a skip of a hierarchical level)
 
-                            # difference = hierarchy[prev_obj.getSection()] - hierarchy_lvl + 1 - \
-                            #              (hierarchy[prev_obj.getSection()] - hierarchy[prev_obj.getParent().getSection()] - 1)
-                            difference = hierarchy[prev_obj.getParent().getSection()] - hierarchy_lvl + 2
+                            # difference = HIERARCHY[prev_obj.get_section()] - hierarchy_lvl + 1 - \
+                            #              (HIERARCHY[prev_obj.get_section()] - HIERARCHY[prev_obj.get_parent().get_section()] - 1)
+                            difference = HIERARCHY[prev_obj.get_parent().get_section()] - hierarchy_lvl + 2
                             prev_obj = get_nth_parent(prev_obj, difference)
 
                             new = Text(potential_tag, tag_contents, prev_obj, [], None)
-                            prev_obj.addSubsection(new)
+                            prev_obj.add_subsection(new)
 
                         prev_obj = new
 
                         n_valid_tags += 1
 
-                    elif potential_tag in dataType:
-                        if not prev_obj.hasData():
-                            prev_obj.setData(tag_contents)
+                    elif potential_tag in DATA_TYPE:
+                        if not prev_obj.has_data():
+                            prev_obj.set_data(tag_contents)
 
                         else:
-                            prev_obj.addToData(tag_contents)
+                            prev_obj.add_to_data(tag_contents)
                         
                         n_valid_tags += 1
 
@@ -219,7 +217,7 @@ def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_l
 
 def get_nth_parent(prev_obj, difference):
     for i in xrange(difference):
-        prev_obj = prev_obj.getParent()
+        prev_obj = prev_obj.get_parent()
 
     return prev_obj
 
@@ -314,28 +312,28 @@ def print_header():
     print '{0:5}{1:6}{2:9}{3:10}{4:10}{5}'.format('Ch.', 'Year', 'Objects', 'Usage', 'Time (s)', 'Status')
 
 
-hierarchy = {'section-head':0,      \
-             'subsection-head':1,   \
-             'paragraph-head':2,    \
-             'subparagraph-head':3, \
-             'clause-head':4,       \
-             'subclause-head':5,    \
-             'subsubclause-head':6}
+HIERARCHY = {'section-head'             : 0, \
+             'subsection-head'          : 1, \
+             'paragraph-head'           : 2, \
+             'subparagraph-head'        : 3, \
+             'clause-head'              : 4, \
+             'subclause-head'           : 5, \
+             'subsubclause-head'        : 6}
 
-dataType = ['statutory-body',                                               \
-            'statutory-body-1em',                                           \
-            'statutory-body-2em',                                           \
-            'statutory-body-3em',                                           \
-            'statutory-body-4em',                                           \
-            'statutory-body-5em',                                           \
-            'statutory-body-6em',                                           \
-            'statutory-body-block',                                         \
-            'statutory-body-block-1em',                                     \
-            'statutory-body-block-2em',                                     \
-            'statutory-body-flush2_hang3',                                  \
-            'wide_left_side_0em-two-column-analysis-style-content-left',    \
-            'leader-work-head-left',                                        \
-            'three-column-analysis-style-content-left']
+DATA_TYPE = ['statutory-body',                                               \
+             'statutory-body-1em',                                           \
+             'statutory-body-2em',                                           \
+             'statutory-body-3em',                                           \
+             'statutory-body-4em',                                           \
+             'statutory-body-5em',                                           \
+             'statutory-body-6em',                                           \
+             'statutory-body-block',                                         \
+             'statutory-body-block-1em',                                     \
+             'statutory-body-block-2em',                                     \
+             'statutory-body-flush2_hang3',                                  \
+             'wide_left_side_0em-two-column-analysis-style-content-left',    \
+             'leader-work-head-left',                                        \
+             'three-column-analysis-style-content-left']
 
 # Example for 'wide_left_side_0em-two-column-analysis-style-content-left' is chapter 16, year 2002
 # Example for 'leader-work-head-left' is chapter 12, year 2001
@@ -352,45 +350,46 @@ class Text:
         self.__data = data
 
     def __repr__(self):
-        return 'OBJ' + self.getSection()
+        return 'OBJ' + self.get_section()
 
-    def getSection(self):
+    def get_section(self):
         return self.__section
 
-    def getContent(self):
+    def get_content(self):
         return self.__content
 
-    def getParent(self):
+    def get_parent(self):
         return self.__parent
 
-    def getSubsections(self):
+    def get_subsections(self):
         return self.__subsections
 
-    def addSubsection(self, subsection):
+    def add_subsection(self, subsection):
         self.__subsections.append(subsection)
 
-    def hasSubsections(self):
+    def has_subsections(self):
         if len(self.__subsections) > 0:
             return True
         return False
-
-    def hasParent(self):
+    
+    # Currently not being used...
+    def has_parent(self):
         if self.__parent != None:
             return True
         return False
 
-    def getData(self):
+    def get_data(self):
         return self.__data
 
-    def setData(self, data):
+    def set_data(self, data):
         self.__data = data
 
-    def hasData(self):
+    def has_data(self):
         if self.__data != None:
             return True
         return False
 
-    def addToData(self, moreData):
+    def add_to_data(self, moreData):
         self.__data += '\n' + moreData
 
 
@@ -399,12 +398,12 @@ def printAll(e):
     objects = 0
     for thing in e:
         objects += 1
-        post.write(thing.getContent() + '\n')
-        if thing.hasData():
-            post.write(thing.getData() + '\n')
+        post.write(thing.get_content() + '\n')
+        if thing.has_data():
+            post.write(thing.get_data() + '\n')
         post.write('\n')
-        if thing.hasSubsections():
-            objects += printAll(thing.getSubsections())
+        if thing.has_subsections():
+            objects += printAll(thing.get_subsections())
     return objects
 
 
@@ -441,20 +440,20 @@ def remove_html(line):
 
 # This can be used to print the tag of a single Text object with the right indentation
 def printHierarchy(element):
-    indentation = hierarchy[element.getSection()]
+    indentation = HIERARCHY[element.get_section()]
     result = ''
 
     for x in xrange(indentation):
         result += '    '
 
-    result += (element.getSection() + '\n')
+    result += (element.get_section() + '\n')
 
     return result
 
 
 """ Here is where all the work starts """
 
-# NOTE THAT THE YEAR ONLY GOES UP TO 2015, and the YEARS all start at 1994. ALSO "prelim" represents current year.
+
 
 
 """ THIS MARKS WHEN I AM DONE TRANSCRIBING STUFF """
@@ -496,11 +495,11 @@ if __name__ == '__main__':
 """
 # This stuff below is for the sole purpose of trying to find similar matches to currently known tags.
 
-# |interestingTags| contains both |hierarchy| and |dataType|.
+# |interestingTags| contains both |HIERARCHY| and |DATA_TYPE|.
 interestingTags = []
-for e in dataType:
+for e in DATA_TYPE:
     interestingTags.append(e)
-for e in hierarchy:
+for e in HIERARCHY:
     interestingTags.append(e)
 
 # This goes through |undesirables| and compares each of its elements with all the elements in |interestingTags|.
