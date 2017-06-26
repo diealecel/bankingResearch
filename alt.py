@@ -473,7 +473,7 @@ def print_hierarchy(element):
 # is a part of something in |undesirables|, then |undesirables|' element is written
 # into undesirables_locs.out.
 def record_locs(undesirables, all_tags):
-    with open('undesirables_locs.out', 'w') as locs:
+    with open('pdu_locs.out', 'w') as locs:
         for undesirable in undesirables:
             for tag in all_tags:
                 if undesirable.find(tag) != -1:
@@ -486,12 +486,12 @@ def record_locs(undesirables, all_tags):
 # delimiters, and puts the new files into undesirables.out. Essentially shows the
 # set of undesirable tags.
 def record_no_locs():
-    with open('undesirables.out', 'w') as no_locs:
-        with open('undesirables_locs.out', 'r') as locs:
+    with open('pdu.out', 'w') as no_locs:
+        with open('pdu_locs.out', 'r') as locs:
             und_no_locs = set()
 
             for und in locs:
-                und_no_locs.add(und[und.find('::') + 2 : ])
+                und_no_locs.add(und[und.find('::') + 2 : ]) # 2 is length of '::'
 
             for und in und_no_locs:
                 no_locs.write(und + '\n')
@@ -512,9 +512,17 @@ def pdu(undesirables):
     record_locs(undesirables, all_tags)
     record_no_locs()
 
-    print 'Finished generating undesirable lists.'
+    print 'Finished generating PDU lists.'
 
 
+def record_all(undesirables):
+    print '\nGenerating list of undesirables...'
+
+    with open('undesirables.out', 'w') as unds:
+        for und in undesirables:
+            unds.write(und + '\n')
+    
+    print 'Finished generating undesirable list.'
 
 
 """ Here is where all the work starts """
@@ -534,6 +542,8 @@ if __name__ == '__main__':
     print_end()
 
     pdu(undesirables)
+
+    record_all(undesirables)
 
 
 """with open('undesirablesWithCertainty.out', 'r') as source:
