@@ -19,9 +19,15 @@ from bs4 import BeautifulSoup       # Needed to read source code.
 # TITLE 15 GOES TO LETTER E and has ADDITIONAL THING THAT USES "-1"! LIKE
 # CHAPTER 2B-1
 
+
+# Title 12 goes from chapters 1 to 54
+# Title 15 goes from chapters 1 to 111
+
+TITLE = 15
+
 # Initializing all variables.
 LAWS_URL_PRE_YR = 'http://uscode.house.gov/view.xhtml?hl=false&edition='
-LAWS_URL_POST_YR = '&req=granuleid%3AUSC-prelim-title12-chapter'
+LAWS_URL_POST_YR = '&req=granuleid%3AUSC-prelim-title' + str(TITLE) + '-chapter'
 
 EDGE_TAG = 'leader-work-head-left'
 
@@ -29,14 +35,16 @@ EDGE_TAG = 'leader-work-head-left'
 # NOTE THAT THE YEAR ONLY GOES UP TO 2015, and the YEARS all start at 1994. ALSO "prelim" represents current year.
 
 CH_START = 1
-CH_STOP = 54
-STARTING_YEAR = 1994
-ENDING_YEAR = 2015
+CH_STOP = 111
+YR_START = 1994
+YR_STOP = 2015
 MIN_SOUP_LEN = 4000 # Received this value from testing the files with zero bytes.
 
 TIME_START = time.time()
 
-CH_LETS = ['', 'A', 'B']
+CH_LETS = ['', 'A', 'B', 'C', 'D', 'E']
+LET_SECTS = ['', '-1']
+
 INVALID_URL_LENS = [3861, 3865, 3869, 3873] # Received these values from testing the files with invalid URL's.
 
 
@@ -45,42 +53,44 @@ def clear_console():
 
 
 def print_end():
-    print '\nEntire process finished, taking ' + str(time.time() - TIME_START) + ' seconds.'
+    print '\nEntire process finished, taking ' + time.strftime('%H hours, %M minutes, and %S seconds.', time.gmtime(time.time() - TIME_START))
 
 
 def process_data(variate_yr_rng, undesirables):
     for variate_ch in xrange(CH_STOP - CH_START + 1):
 
         for variate_let in CH_LETS:
+            
+            for variate_sect in LET_SECTS:
 
-            for variate_yr in variate_yr_rng:
-                ch_timer = time.time() # Start timer.
+                for variate_yr in variate_yr_rng:
+                    ch_timer = time.time() # Start timer.
 
-                laws_url = LAWS_URL_PRE_YR + variate_yr + LAWS_URL_POST_YR + \
-                           str(CH_START + variate_ch) + variate_let
-                soup, retry, tries = make_soup(laws_url)
+                    laws_url = LAWS_URL_PRE_YR + variate_yr + LAWS_URL_POST_YR + \
+                               str(CH_START + variate_ch) + variate_let + variate_sect
+                    soup, retry, tries = make_soup(laws_url)
 
-                # Exits current iteration of inner loop.
-                #
-                # The reason why 'break' isn't used is because some years are
-                # missing from some chapters.
-                if not validate_soup(soup):
-                    continue
+                    # Exits current iteration of inner loop.
+                    #
+                    # The reason why 'break' isn't used is because some years are
+                    # missing from some chapters.
+                    if not validate_soup(soup):
+                        continue
 
-                result_name, source_name = make_names(variate_ch, variate_let, variate_yr)
-                
-                
+                    result_name, source_name = make_names(variate_ch, variate_let, variate_yr, variate_sect)
+                    
+                    
 
-                with open(source_name, 'w') as source: # Write HTML onto a file.
-                    source.write(str(soup))
+                    with open(source_name, 'w') as source: # Write HTML onto a file.
+                        source.write(str(soup))
 
-                top = [] # Contains all Text objects with section 'section-head'
-                top, n_objs, n_valid_tags, n_invalid_tags = make_top(soup, result_name, source_name, undesirables, variate_ch, variate_let, variate_yr)
+                    top = [] # Contains all Text objects with section 'section-head'
+                    top, n_objs, n_valid_tags, n_invalid_tags = make_top(soup, result_name, source_name, undesirables, variate_ch, variate_let, variate_yr, variate_sect)
 
-                # Anything after this line is after the source.in has been read and |top|
-                # has been constructed.
+                    # Anything after this line is after the source.in has been read and |top|
+                    # has been constructed.
 
-                report(n_objs, retry, tries, ch_timer, variate_ch, variate_let, variate_yr, n_valid_tags, n_invalid_tags)
+                    report(n_objs, retry, tries, ch_timer, variate_ch, variate_let, variate_yr, variate_sect, n_valid_tags, n_invalid_tags)
 
 
 def print_top(top, result):
@@ -101,10 +111,10 @@ def print_top(top, result):
     return n_objs
 
 
-def report(n_objs, retry, tries, ch_timer, variate_ch, variate_let, variate_yr, n_valid_tags, n_invalid_tags):
+def report(n_objs, retry, tries, ch_timer, variate_ch, variate_let, variate_yr, variate_sect, n_valid_tags, n_invalid_tags):
     status = get_status(n_objs, retry, tries)
 
-    print '{0:5}{1:6}{2:9}{3:10}{4:10}{5}'.format(str(CH_START + variate_ch) + variate_let, \
+    print '{0:5}{1:6}{2:9}{3:10}{4:10}{5}'.format(str(CH_START + variate_ch) + variate_let + variate_sect, \
           'CURR' if variate_yr == 'prelim' else variate_yr, str(n_objs), \
           str(round(n_valid_tags / float(n_valid_tags + n_invalid_tags) * 100, 4)) + '%', \
           str(round(time.time() - ch_timer, 4)), status)
@@ -126,7 +136,7 @@ def get_status(n_objs, retry, tries):
     return status
 
 
-def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_let, variate_yr):
+def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_let, variate_yr, variate_sect):
     write_source(soup, source_name)
     
     top = [] # Contains all Text objects with section 'section-head'
@@ -205,7 +215,7 @@ def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_l
                         # Essentially, if no tag is found or anything then this ELSE runs.
                         # Keep note of how there is a delimiter that allows for ease of searching
                         # inserted before |potential_tag|.
-                        undesirables.add(str(CH_START + variate_ch) + variate_let + ' ' + variate_yr + '::' + potential_tag)
+                        undesirables.add(str(CH_START + variate_ch) + variate_let + variate_sect + ' ' + variate_yr + '::' + potential_tag)
                         n_invalid_tags += 1
 
                     if not repeat_needed:
@@ -231,11 +241,11 @@ def write_source(soup, source_name):
         source.write(str(soup))
 
 
-def make_names(variate_ch, variate_let, variate_yr):
-    result_name = 'results/ch' + str(CH_START + variate_ch) + variate_let + 'yr' + \
+def make_names(variate_ch, variate_let, variate_yr, variate_sect):
+    result_name = 'results/ch' + str(CH_START + variate_ch) + variate_let + variate_sect + 'yr' + \
                   ('CURR' if variate_yr == 'prelim' else variate_yr) + '.out'
 
-    source_name = 'sources/ch' + str(CH_START + variate_ch) + variate_let + 'yr' + \
+    source_name = 'sources/ch' + str(CH_START + variate_ch) + variate_let + variate_sect + 'yr' + \
                   ('CURR' if variate_yr == 'prelim' else variate_yr) + '.in'
 
     return result_name, source_name
@@ -288,8 +298,8 @@ def validate_soup(soup):
 def make_variate_yr_rng():
     variate_yr_rng = []
 
-    for i in range(ENDING_YEAR - STARTING_YEAR + 1):
-        variate_yr_rng.append(str(STARTING_YEAR + i))
+    for i in range(YR_STOP - YR_START + 1):
+        variate_yr_rng.append(str(YR_START + i))
 
     # This is a special word used to reference the current year.
     variate_yr_rng.append('prelim')
@@ -302,6 +312,10 @@ def make_variate_yr_rng():
 
 def print_beginning():
     print_intro()
+
+    print 'Accessing title ' + str(TITLE) + ' chapters ' + str(CH_START) + ' to ' + str(CH_STOP) + '.'
+    print 'Looking through years ' + str(YR_START) + ' to ' + str(YR_STOP) + '.\n'
+
     print_header()
 
 
