@@ -9,11 +9,12 @@
 import subprocess                   # Needed to clear the console window (and to use bash commands, not that they are needed).
 import time                         # Needed to calculate the amount of time taken to run algorithms.
 import httplib                      # Needed to catch IncompleteRead
-from httplib import IncompleteRead  # Also needed to catch IncompleteRead
+from httplib import IncompleteRead  # Also needed to catch IncompleteRead apparently?
 import urllib2                      # Needed to use URLError.
 from urllib2 import URLError        # Needed to catch URLError.
 import mechanize                    # Needed to use Browser.
 from bs4 import BeautifulSoup       # Needed to read source code.
+from httplib import BadStatusLine   # Needed to catch BadStatusLine apparently?
 
 
 # TITLE 15 GOES TO LETTER E and has ADDITIONAL THING THAT USES "-1"! LIKE
@@ -272,7 +273,7 @@ def make_soup(laws_url):
             retry = True
             tries += 1
         
-        except (urllib2.URLError, httplib.IncompleteRead) as error:
+        except (urllib2.URLError, httplib.IncompleteRead, httplib.BadStatusLine) as error:
             # Successfully caught error!
 
             retry = True

@@ -9,8 +9,8 @@ The Congress finds the following:
 (5) Some commercial electronic mail contains material that many recipients may consider vulgar or pornographic in nature.
 (6) The growth in unsolicited commercial electronic mail imposes significant monetary costs on providers of Internet access services, businesses, and educational and nonprofit institutions that carry and receive such mail, as there is a finite volume of mail that such providers, businesses, and institutions can handle without further investment in infrastructure.
 (7) Many senders of unsolicited commercial electronic mail purposefully disguise the source of such mail.
-(8) Many senders of unsolicited commercial electronic mail purposefully include misleading information in the messages’ subject lines in order to induce the recipients to view the messages.
-(9) While some senders of commercial electronic mail messages provide simple and reliable ways for recipients to reject (or “opt-out” of) receipt of commercial electronic mail from such senders in the future, other senders provide no such “opt-out” mechanism, or refuse to honor the requests of recipients not to receive electronic mail from such senders in the future, or both.
+(8) Many senders of unsolicited commercial electronic mail purposefully include misleading information in the messages&amp;apos; subject lines in order to induce the recipients to view the messages.
+(9) While some senders of commercial electronic mail messages provide simple and reliable ways for recipients to reject (or "opt-out" of) receipt of commercial electronic mail from such senders in the future, other senders provide no such "opt-out" mechanism, or refuse to honor the requests of recipients not to receive electronic mail from such senders in the future, or both.
 (10) Many senders of bulk unsolicited commercial electronic mail use computer programs to gather large numbers of electronic mail addresses on an automated basis from Internet websites or online services where users must post their addresses in order to make full use of the website or service.
 (11) Many States have enacted legislation intended to regulate or reduce unsolicited commercial electronic mail, but these statutes impose different standards and requirements. As a result, they do not appear to have been successful in addressing the problems associated with unsolicited commercial electronic mail, in part because, since an electronic mail address does not specify a geographic location, it can be extremely difficult for law-abiding businesses to know with which of these disparate statutes they are required to comply.
 (12) The problems associated with the rapid growth and abuse of unsolicited commercial electronic mail cannot be solved by Federal legislation alone. The development and adoption of technological approaches and the pursuit of cooperative efforts with other countries will be necessary as well.
@@ -25,17 +25,17 @@ On the basis of the findings in subsection (a), the Congress determines that—
 In this chapter:
 
 (1) Affirmative consent
-The term “affirmative consent”, when used with respect to a commercial electronic mail message, means that—
+The term "affirmative consent", when used with respect to a commercial electronic mail message, means that—
 (A) the recipient expressly consented to receive the message, either in response to a clear and conspicuous request for such consent or at the recipient's own initiative; and
 (B) if the message is from a party other than the party to which the recipient communicated such consent, the recipient was given clear and conspicuous notice at the time the consent was communicated that the recipient's electronic mail address could be transferred to such other party for the purpose of initiating commercial electronic mail messages.
 
 (2) Commercial electronic mail message
 
 (A) In general
-The term “commercial electronic mail message” means any electronic mail message the primary purpose of which is the commercial advertisement or promotion of a commercial product or service (including content on an Internet website operated for a commercial purpose).
+The term "commercial electronic mail message" means any electronic mail message the primary purpose of which is the commercial advertisement or promotion of a commercial product or service (including content on an Internet website operated for a commercial purpose).
 
 (B) Transactional or relationship messages
-The term “commercial electronic mail message” does not include a transactional or relationship message.
+The term "commercial electronic mail message" does not include a transactional or relationship message.
 
 (C) Regulations regarding primary purpose
 Not later than 12 months after December 16, 2003, the Commission shall issue regulations pursuant to section 7711 of this title defining the relevant criteria to facilitate the determination of the primary purpose of an electronic mail message.
@@ -44,48 +44,48 @@ Not later than 12 months after December 16, 2003, the Commission shall issue reg
 The inclusion of a reference to a commercial entity or a link to the website of a commercial entity in an electronic mail message does not, by itself, cause such message to be treated as a commercial electronic mail message for purposes of this chapter if the contents or circumstances of the message indicate a primary purpose other than commercial advertisement or promotion of a commercial product or service.
 
 (3) Commission
-The term “Commission” means the Federal Trade Commission.
+The term "Commission" means the Federal Trade Commission.
 
 (4) Domain name
-The term “domain name” means any alphanumeric designation which is registered with or assigned by any domain name registrar, domain name registry, or other domain name registration authority as part of an electronic address on the Internet.
+The term "domain name" means any alphanumeric designation which is registered with or assigned by any domain name registrar, domain name registry, or other domain name registration authority as part of an electronic address on the Internet.
 
 (5) Electronic mail address
-The term “electronic mail address” means a destination, commonly expressed as a string of characters, consisting of a unique user name or mailbox (commonly referred to as the “local part”) and a reference to an Internet domain (commonly referred to as the “domain part”), whether or not displayed, to which an electronic mail message can be sent or delivered.
+The term "electronic mail address" means a destination, commonly expressed as a string of characters, consisting of a unique user name or mailbox (commonly referred to as the "local part") and a reference to an Internet domain (commonly referred to as the "domain part"), whether or not displayed, to which an electronic mail message can be sent or delivered.
 
 (6) Electronic mail message
-The term “electronic mail message” means a message sent to a unique electronic mail address.
+The term "electronic mail message" means a message sent to a unique electronic mail address.
 
 (7) FTC Act
-The term “FTC Act” means the Federal Trade Commission Act (15 U.S.C. 41 et seq.).
+The term "FTC Act" means the Federal Trade Commission Act (15 U.S.C. 41 et seq.).
 
 (8) Header information
-The term “header information” means the source, destination, and routing information attached to an electronic mail message, including the originating domain name and originating electronic mail address, and any other information that appears in the line identifying, or purporting to identify, a person initiating the message.
+The term "header information" means the source, destination, and routing information attached to an electronic mail message, including the originating domain name and originating electronic mail address, and any other information that appears in the line identifying, or purporting to identify, a person initiating the message.
 
 (9) Initiate
-The term “initiate”, when used with respect to a commercial electronic mail message, means to originate or transmit such message or to procure the origination or transmission of such message, but shall not include actions that constitute routine conveyance of such message. For purposes of this paragraph, more than one person may be considered to have initiated a message.
+The term "initiate", when used with respect to a commercial electronic mail message, means to originate or transmit such message or to procure the origination or transmission of such message, but shall not include actions that constitute routine conveyance of such message. For purposes of this paragraph, more than one person may be considered to have initiated a message.
 
 (10) Internet
-The term “Internet” has the meaning given that term in the Internet Tax Freedom Act (47 U.S.C. 151 nt).
+The term "Internet" has the meaning given that term in the Internet Tax Freedom Act (47 U.S.C. 151 nt).
 
 (11) Internet access service
-The term “Internet access service” has the meaning given that term in section 231(e)(4) of title 47.
+The term "Internet access service" has the meaning given that term in section 231(e)(4) of title 47.
 
 (12) Procure
-The term “procure”, when used with respect to the initiation of a commercial electronic mail message, means intentionally to pay or provide other consideration to, or induce, another person to initiate such a message on one's behalf.
+The term "procure", when used with respect to the initiation of a commercial electronic mail message, means intentionally to pay or provide other consideration to, or induce, another person to initiate such a message on one's behalf.
 
 (13) Protected computer
-The term “protected computer” has the meaning given that term in section 1030(e)(2)(B) of title 18.
+The term "protected computer" has the meaning given that term in section 1030(e)(2)(B) of title 18.
 
 (14) Recipient
-The term “recipient”, when used with respect to a commercial electronic mail message, means an authorized user of the electronic mail address to which the message was sent or delivered. If a recipient of a commercial electronic mail message has one or more electronic mail addresses in addition to the address to which the message was sent or delivered, the recipient shall be treated as a separate recipient with respect to each such address. If an electronic mail address is reassigned to a new user, the new user shall not be treated as a recipient of any commercial electronic mail message sent or delivered to that address before it was reassigned.
+The term "recipient", when used with respect to a commercial electronic mail message, means an authorized user of the electronic mail address to which the message was sent or delivered. If a recipient of a commercial electronic mail message has one or more electronic mail addresses in addition to the address to which the message was sent or delivered, the recipient shall be treated as a separate recipient with respect to each such address. If an electronic mail address is reassigned to a new user, the new user shall not be treated as a recipient of any commercial electronic mail message sent or delivered to that address before it was reassigned.
 
 (15) Routine conveyance
-The term “routine conveyance” means the transmission, routing, relaying, handling, or storing, through an automatic technical process, of an electronic mail message for which another person has identified the recipients or provided the recipient addresses.
+The term "routine conveyance" means the transmission, routing, relaying, handling, or storing, through an automatic technical process, of an electronic mail message for which another person has identified the recipients or provided the recipient addresses.
 
 (16) Sender
 
 (A) In general
-Except as provided in subparagraph (B), the term “sender”, when used with respect to a commercial electronic mail message, means a person who initiates such a message and whose product, service, or Internet web site is advertised or promoted by the message.
+Except as provided in subparagraph (B), the term "sender", when used with respect to a commercial electronic mail message, means a person who initiates such a message and whose product, service, or Internet web site is advertised or promoted by the message.
 
 (B) Separate lines of business or divisions
 If an entity operates through separate lines of business or divisions and holds itself out to the recipient throughout the message as that particular line of business or division rather than as the entity of which such line of business or division is a part, then the line of business or the division shall be treated as the sender of such message for purposes of this chapter.
@@ -93,7 +93,7 @@ If an entity operates through separate lines of business or divisions and holds 
 (17) Transactional or relationship message
 
 (A) In general
-The term “transactional or relationship message” means an electronic mail message the primary purpose of which is—
+The term "transactional or relationship message" means an electronic mail message the primary purpose of which is—
 (i) to facilitate, complete, or confirm a commercial transaction that the recipient has previously agreed to enter into with the sender;
 (ii) to provide warranty information, product recall information, or safety or security information with respect to a commercial product or service used or purchased by the recipient;
 (iii) to provide—
@@ -137,7 +137,7 @@ It is the sense of Congress that—
 (1) Prohibition of false or misleading transmission information
 It is unlawful for any person to initiate the transmission, to a protected computer, of a commercial electronic mail message, or a transactional or relationship message, that contains, or is accompanied by, header information that is materially false or materially misleading. For purposes of this paragraph—
 (A) header information that is technically accurate but includes an originating electronic mail address, domain name, or Internet Protocol address the access to which for purposes of initiating the message was obtained by means of false or fraudulent pretenses or representations shall be considered materially misleading;
-(B) a “from” line (the line identifying or purporting to identify a person initiating the message) that accurately identifies any person who initiated the message shall not be considered materially false or materially misleading; and
+(B) a "from" line (the line identifying or purporting to identify a person initiating the message) that accurately identifies any person who initiated the message shall not be considered materially false or materially misleading; and
 (C) header information shall be considered materially misleading if it fails to identify accurately a protected computer used to initiate the message because the person initiating the message knowingly uses another protected computer to relay or retransmit the message for purposes of disguising its origin.
 
 (2) Prohibition of deceptive subject headings
@@ -176,7 +176,7 @@ A prohibition in subparagraph (A) does not apply if there is affirmative consent
 (B) Subparagraph (A)(i) does not apply to the transmission of a commercial electronic mail message if the recipient has given prior affirmative consent to receipt of the message.
 
 (6) Materially
-For purposes of paragraph (1), the term “materially”, when used with respect to false or misleading header information, includes the alteration or concealment of header information in a manner that would impair the ability of an Internet access service processing the message on behalf of a recipient, a person alleging a violation of this section, or a law enforcement agency to identify, locate, or respond to a person who initiated the electronic mail message or to investigate the alleged violation, or the ability of a recipient of the message to respond to a person who initiated the electronic message.
+For purposes of paragraph (1), the term "materially", when used with respect to false or misleading header information, includes the alteration or concealment of header information in a manner that would impair the ability of an Internet access service processing the message on behalf of a recipient, a person alleging a violation of this section, or a law enforcement agency to identify, locate, or respond to a person who initiated the electronic mail message or to investigate the alleged violation, or the ability of a recipient of the message to respond to a person who initiated the electronic message.
 
 (b) Aggravated violations relating to commercial electronic mail
 
@@ -221,7 +221,7 @@ Paragraph (1) does not apply to the transmission of an electronic mail message i
 Not later than 120 days after December 16, 2003, the Commission in consultation with the Attorney General shall prescribe clearly identifiable marks or notices to be included in or associated with commercial electronic mail that contains sexually oriented material, in order to inform the recipient of that fact and to facilitate filtering of such electronic mail. The Commission shall publish in the Federal Register and provide notice to the public of the marks or notices prescribed under this paragraph.
 
 (4) Definition
-In this subsection, the term “sexually oriented material” means any material that depicts sexually explicit conduct (as that term is defined in section 2256 of title 18), unless the depiction constitutes a small and insignificant part of the whole, the remainder of which is not primarily devoted to sexual matters.
+In this subsection, the term "sexually oriented material" means any material that depicts sexually explicit conduct (as that term is defined in section 2256 of title 18), unless the depiction constitutes a small and insignificant part of the whole, the remainder of which is not primarily devoted to sexual matters.
 
 (5) Penalty
 Whoever knowingly violates paragraph (1) shall be fined under title 18, or imprisoned not more than 5 years, or both.
@@ -239,7 +239,7 @@ It is unlawful for a person to promote, or allow the promotion of, that person's
 (b) Limited enforcement against third parties
 
 (1) In general
-Except as provided in paragraph (2), a person (hereinafter referred to as the “third party”) that provides goods, products, property, or services to another person that violates subsection (a) shall not be held liable for such violation.
+Except as provided in paragraph (2), a person (hereinafter referred to as the "third party") that provides goods, products, property, or services to another person that violates subsection (a) shall not be held liable for such violation.
 
 (2) Exception
 Liability for a violation of subsection (a) shall be imputed to a third party that provides goods, products, property, or services to another person that violates subsection (a) if that third party—
@@ -355,8 +355,8 @@ A provider of Internet access service adversely affected by a violation of secti
 (i) actual monetary loss incurred by the provider of Internet access service as a result of such violation; or
 (ii) the amount determined under paragraph (3).
 
-(2) Special definition of “procure”
-In any action brought under paragraph (1), this chapter shall be applied as if the definition of the term “procure” in section 7702(12) of this title contained, after “behalf” the words “with actual knowledge, or by consciously avoiding knowing, whether such person is engaging, or will engage, in a pattern or practice that violates this chapter”.
+(2) Special definition of "procure"
+In any action brought under paragraph (1), this chapter shall be applied as if the definition of the term "procure" in section 7702(12) of this title contained, after "behalf" the words "with actual knowledge, or by consciously avoiding knowing, whether such person is engaging, or will engage, in a pattern or practice that violates this chapter".
 
 (3) Statutory damages
 
@@ -379,7 +379,7 @@ In assessing damages under subparagraph (A), the court may consider whether—
 (ii) the violation occurred despite commercially reasonable efforts to maintain compliance with the practices and procedures to which reference is made in clause (i).
 
 (4) Attorney fees
-In any action brought pursuant to paragraph (1), the court may, in its discretion, require an undertaking for the payment of the costs of such action, and assess reasonable costs, including reasonable attorneys’ fees, against any party.
+In any action brought pursuant to paragraph (1), the court may, in its discretion, require an undertaking for the payment of the costs of such action, and assess reasonable costs, including reasonable attorneys&amp;apos; fees, against any party.
 
 §7707. Effect on other laws
 
@@ -429,7 +429,7 @@ The Commission shall transmit to the Senate Committee on Commerce, Science, and 
 (i) identifies the person in violation of this chapter; and
 (ii) supplies information that leads to the successful collection of a civil penalty by the Commission; and
 (B) procedures to minimize the burden of submitting a complaint to the Commission concerning violations of this chapter, including procedures to allow the electronic submission of complaints to the Commission; and
-(2) a report, within 18 months after December 16, 2003, that sets forth a plan for requiring commercial electronic mail to be identifiable from its subject line, by means of compliance with Internet Engineering Task Force Standards, the use of the characters “ADV” in the subject line, or other comparable identifier, or an explanation of any concerns the Commission has that cause the Commission to recommend against the plan.
+(2) a report, within 18 months after December 16, 2003, that sets forth a plan for requiring commercial electronic mail to be identifiable from its subject line, by means of compliance with Internet Engineering Task Force Standards, the use of the characters "ADV" in the subject line, or other comparable identifier, or an explanation of any concerns the Commission has that cause the Commission to recommend against the plan.
 
 §7711. Regulations
 
@@ -457,7 +457,7 @@ The Federal Communications Commission, in consultation with the Federal Trade Co
 The Federal Communications Commission shall consider the ability of a sender of a commercial electronic mail message to reasonably determine that the message is a mobile service commercial message.
 
 (d) Mobile service commercial message defined
-In this section, the term “mobile service commercial message” means a commercial electronic mail message that is transmitted directly to a wireless device that is utilized by a subscriber of commercial mobile service (as such term is defined in section 332(d) of title 47) in connection with such service.
+In this section, the term "mobile service commercial message" means a commercial electronic mail message that is transmitted directly to a wireless device that is utilized by a subscriber of commercial mobile service (as such term is defined in section 332(d) of title 47) in connection with such service.
 
 §7713. Separability
 If any provision of this chapter or the application thereof to any person or circumstance is held invalid, the remainder of this chapter and the application of such provision to other persons or circumstances shall not be affected.
