@@ -1,0 +1,58 @@
+                        var nextS = function(event) { bindLink(event, 's', 'frmNav:nextSection')};
+presidential-signature
+                var next = function(event) { bindCode(event, 'r', 'j_idt21:j_idt23:nextResult')};
+                    for (var i=0; i<select.options.length; i++) {
+note-body-3em
+italic-text-para
+float:left; width: 150px; text-align: left; font-size: 12px;
+chapter-head
+                        var prevS = function(event) { bindLink(event, 'S', 'frmNav:prevSection')};
+italic-text-head-1em
+italic-text-head
+item-head
+note-body-block-1em
+futureamend-note-body
+                var prev = function(event) { bindCode(event, 'R', 'j_idt21:j_idt23:prevResult')};
+two-column-analysis-style-content-subitem-left
+note-body-flush0_hang4
+analysis-head-left
+italic-text-para-2em
+note-body-2em
+futureamend-note-head
+note-body-1em
+float:left; width: 220px; overflow: visible; text-align: left;
+analysis
+                        if (select.options[i].value==editionYear) {
+subpart-head
+contextHeader
+                var next = function(event) { bindCode(event, 'v', 'j_idt30:formResults:nextResult')};
+contextHeadline
+part-head
+                                links[i].style.background = 'yellow';
+note-sub-head
+                    // Hide the pending section if version different to prelim.
+left
+analysis-subhead
+viewheader
+                // Set select's default option.
+container
+analysis-style-table
+division-head
+                    editionYear = documentYear;
+italic-text-head-2em
+two-column-analysis-style-content-left
+note-head
+note-body
+note-body-flush0_hang1
+                var prev = function(event) { bindCode(event, 'V', 'j_idt30:formResults:prevResult')};
+viewheader_keyword
+viewheader_subdiv
+italic-text-para-1em
+content
+note-body-flush2_hang3
+</form></span></body>
+note-body-flush0_hang2
+subchapter-head
+-//W3C//DTD XHTML 1.0 Transitional//EN
+left2em
+note-body-block

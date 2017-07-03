@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Diego Celis
 # In the pursuit of making this thing work.
 
@@ -15,6 +17,8 @@ from urllib2 import URLError        # Needed to catch URLError.
 import mechanize                    # Needed to use Browser.
 from bs4 import BeautifulSoup       # Needed to read source code.
 from httplib import BadStatusLine   # Needed to catch BadStatusLine apparently?
+import re                           # Needed for filter(), enables regex checks
+import sys                          # Needed for progress bar.
 
 
 # TITLE 15 GOES TO LETTER E and has ADDITIONAL THING THAT USES "-1"! LIKE
@@ -41,6 +45,8 @@ YR_START = 1994
 YR_STOP = 2015
 MIN_SOUP_LEN = 4000 # Received this value from testing the files with zero bytes.
 
+MIN_TAG_SUBSTR_LEN = 4
+
 TIME_START = time.time()
 
 CH_LETS = ['', 'A', 'B', 'C', 'D', 'E']
@@ -53,11 +59,37 @@ def clear_console():
     subprocess.call('clear', shell = True)
 
 
+def print_progress(iteration, total, prefix = '', suffix = '', decimals = 2, bar_length = 100):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        bar_length  - Optional  : character length of bar (Int)
+    """
+    str_format = "{0:." + str(decimals) + "f}"
+    percents = str_format.format(100 * (iteration / float(total)))
+    filled_length = int(round(bar_length * iteration / float(total)))
+    bar = '█' * filled_length + '-' * (bar_length - filled_length)
+
+    sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),
+
+    # Print new line when complete
+    if iteration == total:
+        sys.stdout.write('\n')
+    sys.stdout.flush()
+
+
 def print_end():
     print '\nEntire process finished, taking ' + time.strftime('%H hours, %M minutes, and %S seconds.', time.gmtime(time.time() - TIME_START))
 
 
 def process_data(variate_yr_rng, undesirables):
+    valid_appends = set()
+
     for variate_ch in xrange(CH_STOP - CH_START + 1):
 
         for variate_let in CH_LETS:
@@ -78,6 +110,8 @@ def process_data(variate_yr_rng, undesirables):
                     if not validate_soup(soup):
                         continue
 
+                    valid_appends.add(str(CH_START + variate_ch) + variate_let + variate_sect)
+
                     result_name, source_name = make_names(variate_ch, variate_let, variate_yr, variate_sect)
                     
                     
@@ -92,6 +126,10 @@ def process_data(variate_yr_rng, undesirables):
                     # has been constructed.
 
                     report(n_objs, retry, tries, ch_timer, variate_ch, variate_let, variate_yr, variate_sect, n_valid_tags, n_invalid_tags)
+
+    with open('valid_appends.out', 'w') as valid:
+        for append in valid_appends:
+            valid.write(append + '\n')
 
 
 def print_top(top, result):
@@ -321,7 +359,7 @@ def print_beginning():
 
 
 def print_intro():
-    print "Welcome to Diego's Indexer v3!"
+    print "Welcome to Diego's Indexer v3.4!"
     print "File processing is now starting.\n"
 
 
@@ -469,17 +507,74 @@ def print_hierarchy(element):
     return result
 
 
+# Does not include the empty string.
+def get_substrings(str_in, min_len):
+    str_len = len(str_in)
+    substr = [ str_in[i : j + 1] for i in xrange(str_len) for j in xrange(i, str_len) ]
+
+    if min_len != 0:
+        str_i = range(len(substr))
+        str_i = str_i[ : : -1] # Reverse list of indices.
+    
+        for i in str_i:
+            if len(substr[i]) < min_len:
+                del substr[i]
+
+    return substr
+
+
+# Contains a bunch of checks that are applied before marking an undesirable as a PDU.
+def passes_filter(line):
+    return line.find('location') == -1 and not re.match(r'^\s*$', line) and \
+           line[ : 4] != '<!--' and line[ : 7] != '<title>'
+
+
 # This goes through |undesirables| and compares each of its elements with all the
 # elements in |all_tags|. If there is a match found, as in something in |all_tags|
 # is a part of something in |undesirables|, then |undesirables|' element is written
 # into undesirables_locs.out.
 def record_locs(undesirables, all_tags):
     with open('pdu_locs.out', 'w') as locs:
+        """
         for undesirable in undesirables:
             for tag in all_tags:
                 if undesirable.find(tag) != -1:
                     locs.write(undesirable + '\n')
                     break
+        """
+
+        """
+        for undesirable in undesirables:
+            for tag in all_tags:
+                tag_substr = get_substrings(tag, MIN_TAG_SUBSTR_LEN)
+
+                for substr in tag_substr:
+                    if undesirable.find(substr) != -1:
+                        locs.write(undesirable + '\n')
+                        break
+        """
+
+        tag_substrs = set()
+
+        for tag in all_tags:
+            for tag_substr in get_substrings(tag, MIN_TAG_SUBSTR_LEN):
+                tag_substrs.add(tag_substr)
+
+        i = 0
+        l = len(undesirables)
+        print_progress(i, l, 'Progress:')
+
+        for und in undesirables:
+            true_und = und[und.find('::') + 2 : ]
+
+            for tag_substr in tag_substrs:
+                if true_und.find(tag_substr) != -1 and passes_filter(true_und):
+                    locs.write(und + '\n')
+                    break
+
+            i += 1
+            print_progress(i, l, 'Progress:')
+        
 
 
 # und(esirable)
@@ -495,7 +590,7 @@ def record_no_locs():
                 und_no_locs.add(und[und.find('::') + 2 : ]) # 2 is length of '::'
 
             for und in und_no_locs:
-                no_locs.write(und + '\n')
+                no_locs.write(und) # + '\n' is already at the end of line
 
 
 # Potentially desirable undesirables.
