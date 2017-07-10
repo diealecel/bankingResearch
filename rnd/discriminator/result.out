@@ -1,0 +1,23 @@
+                        var nextS = function(event) { bindLink(event, 's', 'frmNav:nextSection')};
+                var next = function(event) { bindCode(event, 'r', 'j_idt21:j_idt23:nextResult')};
+                    for (var i=0; i<select.options.length; i++) {
+float:right; width: 220px; overflow: visible; text-align: right; 
+float:left; width: 150px; text-align: left; font-size: 12px;
+                    //later in the highlighting.
+                        var prevS = function(event) { bindLink(event, 'S', 'frmNav:prevSection')};
+item-head
+                var prev = function(event) { bindCode(event, 'R', 'j_idt21:j_idt23:prevResult')};
+float:left; width: 220px; overflow: visible; text-align: left;
+                        if (select.options[i].value==editionYear) {
+                var next = function(event) { bindCode(event, 'v', 'j_idt30:formResults:nextResult')};
+                                links[i].style.background = 'yellow';
+                    // Hide the pending section if version different to prelim.
+                // Set select's default option.
+chapter-head
+division-head
+                    editionYear = documentYear;
+                var prev = function(event) { bindCode(event, 'V', 'j_idt30:formResults:prevResult')};
+float:right; width: 150px; font-size: 12px;
+</form></span></body>
+subchapter-head
+-//W3C//DTD XHTML 1.0 Transitional//EN

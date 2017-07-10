@@ -28,7 +28,7 @@ import sys                          # Needed for progress bar.
 # Title 12 goes from chapters 1 to 54
 # Title 15 goes from chapters 1 to 111
 
-TITLE = 15
+TITLE = 12
 
 # Initializing all variables.
 LAWS_URL_PRE_YR = 'http://uscode.house.gov/view.xhtml?hl=false&edition='
@@ -40,7 +40,7 @@ EDGE_TAG = 'leader-work-head-left'
 # NOTE THAT THE YEAR ONLY GOES UP TO 2015, and the YEARS all start at 1994. ALSO "prelim" represents current year.
 
 CH_START = 1
-CH_STOP = 111
+CH_STOP = 54
 YR_START = 1994
 YR_STOP = 2015
 MIN_SOUP_LEN = 4000 # Received this value from testing the files with zero bytes.
@@ -359,7 +359,7 @@ def print_beginning():
 
 
 def print_intro():
-    print "Welcome to Diego's Indexer v3.4!"
+    print "Welcome to Diego's Indexer v3.4.1!"
     print "File processing is now starting.\n"
 
 
@@ -376,20 +376,23 @@ HIERARCHY = {'section-head'             : 0, \
              'subclause-head'           : 5, \
              'subsubclause-head'        : 6}
 
-DATA_TYPE = ['statutory-body',                                               \
-             'statutory-body-1em',                                           \
-             'statutory-body-2em',                                           \
-             'statutory-body-3em',                                           \
-             'statutory-body-4em',                                           \
-             'statutory-body-5em',                                           \
-             'statutory-body-6em',                                           \
-             'statutory-body-block',                                         \
-             'statutory-body-block-1em',                                     \
-             'statutory-body-block-2em',                                     \
-             'statutory-body-flush2_hang3',                                  \
-             'wide_left_side_0em-two-column-analysis-style-content-left',    \
-             'leader-work-head-left',                                        \
-             'three-column-analysis-style-content-left']
+DATA_TYPE = ['statutory-body',                                            \
+             'statutory-body-1em',                                        \
+             'statutory-body-2em',                                        \
+             'statutory-body-3em',                                        \
+             'statutory-body-4em',                                        \
+             'statutory-body-5em',                                        \
+             'statutory-body-6em',                                        \
+             'statutory-body-block',                                      \
+             'statutory-body-block-1em',                                  \
+             'statutory-body-block-2em',                                  \
+             'statutory-body-flush2_hang3',                               \
+             'wide_left_side_0em-two-column-analysis-style-content-left', \
+             'leader-work-head-left',                                     \
+             'three-column-analysis-style-content-left',                  \
+             'left',                                                      \
+             'left2em',                                                   \
+             'right']
 
 # Example for 'wide_left_side_0em-two-column-analysis-style-content-left' is chapter 16, year 2002
 # Example for 'leader-work-head-left' is chapter 12, year 2001
@@ -397,7 +400,7 @@ DATA_TYPE = ['statutory-body',                                               \
 # A Text object is a header. Its content is the header itself, and the data is the information
 # which uses the header.
 class Text:
-    def __init__(self, section = None, content = None, parent = None,   \
+    def __init__(self, section = None, content = None, parent = None, \
                  subsections = [], data = None):
         self.__section = section
         self.__content = content
@@ -472,26 +475,26 @@ def remove_html(line):
     case5 = '<div class="leader-work-right">'
 
     if line.find(case1) != -1:
-        line = line[:line.find(case1)] + ' - ' + line[line.find(case1) + len(case1):]
+        line = line[ : line.find(case1)] + ' - ' + line[line.find(case1) + len(case1) : ]
 
     if line.find(case2) != -1: # Header (right side)
-        line = line[:line.find(case2)] + '\t\t|\t\t' + line[line.find(case2) + len(case2):]
+        line = line[ : line.find(case2)] + '\t\t|\t\t' + line[line.find(case2) + len(case2) : ]
 
     if line.find(case3) != -1: # Header (right side)
-        line = line[:line.find(case3)] + '\n' + line[line.find(case3) + len(case3):]
+        line = line[ : line.find(case3)] + '\n' + line[line.find(case3) + len(case3) : ]
 
     if line.find(case4) != -1: # Left data thing, new line
-        line = line[:line.find(case4)] + '\n' + line[line.find(case4) + len(case4):]
+        line = line[ : line.find(case4)] + '\n' + line[line.find(case4) + len(case4) : ]
 
     if line.find(case5) != -1: # Right data thing, separated by delimiter
-        line = line[:line.find(case5)] + ' | ' + line[line.find(case5) + len(case5):]
+        line = line[ : line.find(case5)] + ' | ' + line[line.find(case5) + len(case5) : ]
 
     if line.find("<") == -1 or line.find(">", line.find("<") + 1) == -1:
         return line
 
-    newLine = line[0:line.find("<")] + line[line.find(">", line.find("<") + 1) + 1:]
+    new_line = line[0 : line.find("<")] + line[line.find(">", line.find("<") + 1) + 1 : ]
 
-    return remove_html(newLine)
+    return remove_html(new_line)
 
 
 # This can be used to print the tag of a single Text object with the right indentation
