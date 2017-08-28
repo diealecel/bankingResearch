@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+# Encoding above is needed for progress bar.
 
-# Diego Celis
-# In the pursuit of making this thing work.
+# AUTHOR: Diego Celis
+#
+# In the pursuit of making this thing work. Note that a significant number of
+# packages used in this software are only available in Python 2.7.x.
 
 # TODO:
 # 1. developing or incorporating a text comparison tool, and
@@ -12,11 +15,11 @@ import subprocess                   # Needed to clear the console window (and to
 import time                         # Needed to calculate the amount of time taken to run algorithms.
 import httplib                      # Needed to catch IncompleteRead
 from httplib import IncompleteRead  # Also needed to catch IncompleteRead apparently?
+from httplib import BadStatusLine   # Needed to catch BadStatusLine apparently?
 import urllib2                      # Needed to use URLError.
 from urllib2 import URLError        # Needed to catch URLError.
 import mechanize                    # Needed to use Browser.
 from bs4 import BeautifulSoup       # Needed to read source code.
-from httplib import BadStatusLine   # Needed to catch BadStatusLine apparently?
 import re                           # Needed for filter(), enables regex checks
 import sys                          # Needed for progress bar.
 
@@ -28,7 +31,7 @@ import sys                          # Needed for progress bar.
 # Title 12 goes from chapters 1 to 54
 # Title 15 goes from chapters 1 to 111
 
-TITLE = 12
+TITLE = 15
 
 # Initializing all variables.
 LAWS_URL_PRE_YR = 'http://uscode.house.gov/view.xhtml?hl=false&edition='
@@ -40,12 +43,12 @@ EDGE_TAG = 'leader-work-head-left'
 # NOTE THAT THE YEAR ONLY GOES UP TO 2015, and the YEARS all start at 1994. ALSO "prelim" represents current year.
 
 CH_START = 1
-CH_STOP = 54
+CH_STOP = 111
 YR_START = 1994
 YR_STOP = 2015
 MIN_SOUP_LEN = 4000 # Received this value from testing the files with zero bytes.
 
-MIN_TAG_SUBSTR_LEN = 4
+MIN_TAG_SUBSTR_LEN = 3
 
 TIME_START = time.time()
 
@@ -93,7 +96,7 @@ def process_data(variate_yr_rng, undesirables):
     for variate_ch in xrange(CH_STOP - CH_START + 1):
 
         for variate_let in CH_LETS:
-            
+
             for variate_sect in LET_SECTS:
 
                 for variate_yr in variate_yr_rng:
@@ -113,8 +116,8 @@ def process_data(variate_yr_rng, undesirables):
                     valid_appends.add(str(CH_START + variate_ch) + variate_let + variate_sect)
 
                     result_name, source_name = make_names(variate_ch, variate_let, variate_yr, variate_sect)
-                    
-                    
+
+
 
                     with open(source_name, 'w') as source: # Write HTML onto a file.
                         source.write(str(soup))
@@ -165,7 +168,7 @@ def get_status(n_objs, retry, tries):
     if n_objs > 0:
         if not retry:
             status = 'SUCCESSFUL'
-        
+
         else:
             status = 'SUCCESSFUL RETRY #' + str(tries)
 
@@ -177,20 +180,22 @@ def get_status(n_objs, retry, tries):
 
 def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_let, variate_yr, variate_sect):
     write_source(soup, source_name)
-    
+
     top = [] # Contains all Text objects with section 'section-head'
 
     n_valid_tags = n_invalid_tags = 0
 
     with open(result_name, 'w') as result:
         with open(source_name, 'r') as source:
+            prev_obj = None
+
             for line in source:
                 repeat_needed = False
 
                 while True:
                     tag_let_loc = line.find('"') + 1
                     potential_tag = line[tag_let_loc : line.find('"', tag_let_loc)]
-                    
+
                     tag_contents = None
 
                     if potential_tag == EDGE_TAG: # Special case, another tag is at end of |line|
@@ -213,7 +218,7 @@ def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_l
                             # From end of first tag to beginning of ending tag.
                             new = Text(potential_tag, tag_contents, None, [], None)
                             top.append(new) # |top| contains all 'section-head' Text objects.
-                        
+
                         # If |prev_obj| has a hierarchy right above that of |potential_tag|...
                         elif hierarchy_lvl > HIERARCHY[prev_obj.get_section()]:
                             new = Text(potential_tag, tag_contents, prev_obj, [], None)
@@ -222,7 +227,7 @@ def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_l
                         elif hierarchy_lvl == HIERARCHY[prev_obj.get_section()]:
                             new = Text(potential_tag, tag_contents, prev_obj.get_parent(), [], None)
                             prev_obj.get_parent().add_subsection(new)
-                        
+
                         # Implicit hierarchy_lvl < HIERARCHY[prev_obj.get_section()]
                         else:
                             # Plus one because you need an additional iteration to reach correct parent.
@@ -241,13 +246,13 @@ def make_top(soup, result_name, source_name, undesirables, variate_ch, variate_l
 
                         n_valid_tags += 1
 
-                    elif potential_tag in DATA_TYPE:
+                    elif potential_tag in DATA_TYPE and prev_obj:
                         if not prev_obj.has_data():
                             prev_obj.set_data(tag_contents)
 
                         else:
                             prev_obj.add_to_data(tag_contents)
-                        
+
                         n_valid_tags += 1
 
                     else:
@@ -294,7 +299,7 @@ def make_soup(laws_url):
     retry = False
     tries = 0
     soup = None
-    
+
     # Retries if the first read doesn't work.
     while True:
         try:
@@ -310,7 +315,7 @@ def make_soup(laws_url):
 
             retry = True
             tries += 1
-        
+
         except (urllib2.URLError, httplib.IncompleteRead, httplib.BadStatusLine) as error:
             # Successfully caught error!
 
@@ -346,9 +351,6 @@ def make_variate_yr_rng():
     return variate_yr_rng
 
 
-
-
-
 def print_beginning():
     print_intro()
 
@@ -359,7 +361,7 @@ def print_beginning():
 
 
 def print_intro():
-    print "Welcome to Diego's Indexer v3.4.1!"
+    print "Welcome to Diego's Indexer v3.4.2!"
     print "File processing is now starting.\n"
 
 
@@ -427,15 +429,11 @@ class Text:
         self.__subsections.append(subsection)
 
     def has_subsections(self):
-        if len(self.__subsections) > 0:
-            return True
-        return False
-    
+        return len(self.__subsections) > 0
+
     # Currently not being used...
     def has_parent(self):
-        if self.__parent != None:
-            return True
-        return False
+        return self.__parent != None
 
     def get_data(self):
         return self.__data
@@ -444,15 +442,14 @@ class Text:
         self.__data = data
 
     def has_data(self):
-        if self.__data != None:
-            return True
-        return False
+        return self.__data != None
 
     def add_to_data(self, moreData):
         self.__data += '\n' + moreData
 
 
 # This method will recursively go through all the elements of the hierarchy and print them
+# NOT IN USE
 def printAll(e):
     objects = 0
     for thing in e:
@@ -518,7 +515,7 @@ def get_substrings(str_in, min_len):
     if min_len != 0:
         str_i = range(len(substr))
         str_i = str_i[ : : -1] # Reverse list of indices.
-    
+
         for i in str_i:
             if len(substr[i]) < min_len:
                 del substr[i]
@@ -529,7 +526,7 @@ def get_substrings(str_in, min_len):
 # Contains a bunch of checks that are applied before marking an undesirable as a PDU.
 def passes_filter(line):
     return line.find('location') == -1 and not re.match(r'^\s*$', line) and \
-           line[ : 4] != '<!--' and line[ : 7] != '<title>'
+           line[ : 4] != '<!--' and line[ : 7] != '<title>' and line.find('/view.xhtml;jsessionid') == -1
 
 
 # This goes through |undesirables| and compares each of its elements with all the
@@ -577,7 +574,7 @@ def record_locs(undesirables, all_tags):
 
             i += 1
             print_progress(i, l, 'Progress:')
-        
+
 
 
 # und(esirable)
@@ -620,7 +617,7 @@ def record_all(undesirables):
     with open('undesirables.out', 'w') as unds:
         for und in undesirables:
             unds.write(und + '\n')
-    
+
     print 'Finished generating undesirable list.'
 
 
@@ -692,4 +689,3 @@ with open('undesirables.out', 'w') as post:
         for e in normalSet:
             post.write(e + '\n')
 """
-

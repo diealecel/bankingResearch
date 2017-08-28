@@ -1,0 +1,81 @@
+                        else if (document.attachEvent) {
+                        var nextS = function(event) { bindLink(event, 's', 'frmNav:nextSection')};
+presidential-signature
+italic-text-head
+                var next = function(event) { bindCode(event, 'r', 'j_idt21:j_idt23:nextResult')};
+                    for (var i=0; i<select.options.length; i++) {
+                else if (document.attachEvent) {
+                    //If a standard reference seach then rename each element to be used
+float:left; width: 150px; text-align: left; font-size: 12px;
+chapter-head
+                        var prevS = function(event) { bindLink(event, 'S', 'frmNav:prevSection')};
+source-credit
+text-align: center; visibility: hidden;
+/javax.faces.resource/favicon.ico.xhtml?ln=images
+documentViewer
+item-head
+italic-text-head-1em
+            var closeLink = document.getElementById('closeLink');
+note-body-block-1em
+futureamend-note-body
+row0col0
+no-cache,must-revalidate
+                var prev = function(event) { bindCode(event, 'R', 'j_idt21:j_idt23:prevResult')};
+two-column-analysis-style-content-subitem-left
+/resources/fragments/olrcblurb.xhtml
+analysis-head-left
+                            select.selectedIndex=i;
+centeraligned
+note-body-flush0_hang4
+                        if (select.options[i].value==editionYear) {
+futureamend-note-head
+note-body-1em
+float:left; width: 220px; overflow: visible; text-align: left;
+analysis
+note-body-2em
+subpart-head
+italic-text-para-2em
+contextHeader
+                var next = function(event) { bindCode(event, 'v', 'j_idt30:formResults:nextResult')};
+contextHeadline
+part-head
+<?xml version='1.0' encoding='UTF-8' ?>
+note-sub-head
+                    // Hide the pending section if version different to prelim.
+analysis-subhead
+<p class=
+viewheader
+                // Set select's default option.
+container
+analysis-style-table
+link_class
+                    //later in the highlighting.
+division-head
+                        if (document.addEventListener) {
+                    editionYear = documentYear;
+note-body-3em
+italic-text-head-2em
+two-column-analysis-style-content-left
+float:right; width: 220px; overflow: visible; text-align: right; 
+note-head
+                if (document.addEventListener) {
+note-body
+note-body-flush0_hang1
+                                links[i].style.background = 'yellow';
+                var prev = function(event) { bindCode(event, 'V', 'j_idt30:formResults:prevResult')};
+viewheader_keyword
+viewheader_subdiv
+</select>
+italic-text-para-1em
+content
+note-body-flush2_hang3
+float:right; width: 150px; font-size: 12px;
+</form></span></body>
+note-body-flush0_hang2
+subchapter-head
+no-cache
+-//W3C//DTD XHTML 1.0 Transitional//EN
+navigator
+j_idt30:formResults:versionsSel
+note-body-block
+italic-text-para
