@@ -1,7 +1,7 @@
 division-head
 chapter-head
-left
-right
+left (this is used in a table that is not part of wanted stuff)
+right (this is used in a table that is not part of wanted stuff)
 link_class
 item-head
 navigator
